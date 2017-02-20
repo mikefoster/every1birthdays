@@ -19,10 +19,12 @@
   <div class="wrapper">
   
 
+  <div class="show-all">Show all</div>
+  <h1>It's someones birthday pretty soon...</h1>
     <div class="birthdays">
-	    <h1>It's someones birthday...</h1>
+	    
 	    <ul>
-		    <li  ng-repeat="friend in friends| orderBy:'fromNow ' "  ng-class="{ birthToday: todayBirthday && onlyToday(friend) }">
+		    <li  ng-repeat="friend in friends| orderBy:'fromNow ' "  ng-if="{ birthToday: todayBirthday && onlyToday(friend) }" ng-class="{ birthToday: todayBirthday && onlyToday(friend) }">
 		    	<div class="name">{{friend.name}}</div>
 		    	<div class="date">{{friend.niceBirthday}}</div>
 		    </li>
@@ -30,9 +32,11 @@
     
     </div>
   </div>
-    
+
+<script src="scripts/ag-config.js"></script>
 <script src="scripts/jquery.js"></script>
 <script src="scripts/main.js"></script>
+
 </body>
 
 </html>
