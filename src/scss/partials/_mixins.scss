@@ -1,0 +1,291 @@
+/*----------------------------*/
+/*----------- Mixins-----------*/
+/*----------------------------*/
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 10) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+@mixin line-height($sizeValue: 1) {
+	line-height: ($sizeValue * 10) * 1px;
+	line-height: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// 2x image mixin
+@mixin background-image-retina($file, $type, $width, $height, $positionX: left, $positionY: top, $background-repeat: no-repeat) {
+  background-image: url($file + '.' + $type);
+  background-size: $width $height;
+  background-position: $positionX $positionY;
+  background-repeat: $background-repeat;
+ 
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+    & {
+      background-image: url($file + '@2x.' + $type);
+    }
+  }
+}
+
+// @include background-image-retina('logo', 'png', 160px, 40px, right, top, repeat-x);
+
+
+// RGBa with fallback
+@mixin rgba($property, $background: black, $opacity: 0.75, $mix: white) {
+    #{$property}: mix($background, $mix, $opacity * 100%);
+    #{$property}: rgba($background, $opacity);
+}
+
+@function debug($content) {
+    @return quote($content);
+}
+
+// @include rgba(background-color, black, 0.5, white);
+
+// SVG Background img with fallback
+@mixin svg-bg($name, $extension: png, $color: transparent, $position: 0 0, $background-size: 0 0, $repeat: no-repeat) {
+  background: url(images/#{$name}.#{$extension}) $color $position $repeat;
+  background: none, url(images/#{$name}.svg) $color $position $repeat;
+  background-size: $background-size;
+}
+
+// @include svg-bg('graphic-name', $repeat: repeat,);
+
+// Transitions
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+//@include transition(color .3s ease);
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+//@include flexbox();
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+//@include flex(1 200px);
+
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;  
+  -moz-box-ordinal-group: $val;     
+  -ms-flex-order: $val;     
+  -webkit-order: $val;  
+  order: $val;
+}
+// @include order(2);
+
+
+
+
+////
+/// @author Mike Street
+/// @group Sprite
+////
+
+/// Convert pixels to ems
+///
+/// @param {Number} $px - value to convert
+/// @param {Number} $base-font-size ($mq-base-font-size) - `<body>` font size
+///
+/// @example scss
+///  $font-size-in-ems: mq-px2em(16px);
+///  p { font-size: mq-px2em(16px); }
+///
+/// @requires $mq-base-font-size
+/// @returns {Number}
+
+/// Add class for <IE9 sprite fallback
+/// @group sprite
+/// @type String
+$ieSprite: '.ie8' !default;
+
+
+/// Retrive an attributes value for a specific icon in the sprite map
+/// @param {string} $icon - The name of the icon
+/// @param {string} $attr - The attribute you wish to retrieve (e.g. width)
+
+// Gets an attribute from the sass map
+// Added: spriteMap option
+@function sprite-attr($spriteMap, $icon, $attr) {
+	$icon: map-get($spriteMap, $icon);
+	@return map-get($icon, $attr);
+}
+
+
+
+// Added: spriteMap option
+@function icon-attr($spriteMap, $icon) {
+	$attr: (
+		width: sprite-attr($spriteMap, $icon, width),
+		height: sprite-attr($spriteMap, $icon, height),
+		x: sprite-attr($spriteMap, $icon, backgroundX),
+		y: sprite-attr($spriteMap, $icon, backgroundY)
+	);
+
+	@return $attr;
+}
+
+
+
+/// Assign the correct SVG background image and dimensions to the element
+%sprite {
+	//display: inline-block;
+	//background-image: url(map-get($sprite, svgPath));
+	//background-size: map-get($sprite, width) map-get($sprite, height);
+}
+/// Assign the correct PNG background image and dimensions to the element
+%ie-sprite {
+	 //background-image: url(map-get($sprite, pngPath));
+}
+
+/// Add a sprite PNG icon for browsers with the `$ieSprite` class with px for positioning
+/// @param {string} $icon - The name of the icon
+/// @param {string} $type [all] - The properties wanted (can be `all`, `size` or `bg`).
+/// - `all` ensures the icon has the background, position and size.
+/// - `size` is just for dimensions
+/// - `bg` just  applies the backgrounds to an element
+/// @example scss - Usage
+/// .class {
+/// 	@include ie-sprite(arrow);
+/// 	&:hover {
+/// 		@include ie-sprite(arrowDown, bg)
+/// 	}
+/// }
+///
+/// @example css - Output
+/// .lt-ie9 .class {
+///     background-image: url("../img/sprite.png");
+/// }
+/// .lt-ie9 .class {
+///     width: 20px;
+///     height: 20px;
+///     background-position: -5px -5px;
+/// }
+/// .lt-ie9 .class:hover {
+///     background-position: -36px -36px;
+/// }
+@mixin ie-sprite($spriteMap, $icon, $type: all) {
+	
+	$sprite: map-get($spriteMap, sprite);
+	$iconMap: icon-attr($spriteMap, $icon);
+	
+	@if $ieSprite {
+		#{$ieSprite} & {
+			@if $type == all {
+				// Shares the PNG background
+				background-image: url(map-get($sprite, pngPath));
+			}
+			// Outputs dimensions of icon
+			@if $type == all or $type == size {
+				width: map-get($iconMap, width);
+				height: map-get($iconMap, height);
+			}
+			// Outputs background position
+			@if $type == all or $type == bg {
+				background-position: (map-get($iconMap, x)) (map-get($iconMap, y));
+			}
+		}
+	}
+}
+
+/// Add an SVG sprite icon using em positioning, with a PNG icon for browsers with the `$ieSprite` class using px positioning
+/// @param {string} $icon - The name of the icon
+/// @param {string} $type [all] - The properties wanted (can be `all`, `size` or `bg`).
+/// - `all` ensures the icon has the background, position and size.
+/// - `size` is just for dimensions
+/// - `bg` just  applies the backgrounds to an element
+/// @example scss - Usage
+/// .class {
+/// 	@include sprite(arrow);
+/// 	&:hover {
+/// 		@include sprite(arrowDown, bg)
+/// 	}
+/// }
+///
+/// @example css - Output
+/// .class {
+/// 	display: inline-block;
+/// 	background-image: url("../img/sprite.svg");
+/// 	background-size: 34.25em 32.1875em;
+/// }
+///
+/// .lt-ie9 .class {
+/// 	background-image: url("../img/sprite.png");
+/// }
+///
+/// .class {
+/// 	width: 1.3125em;
+/// 	height: 1.3125em;
+/// 	background-position: -0.3125em -0.3125em;
+/// }
+/// .lt-ie9 .class {
+/// 	width: 20px;
+/// 	height: 20px;
+/// 	background-position: -5px -5px;
+/// }
+/// .class:hover {
+/// 	background-position: -2.25em -2.25em;
+/// }
+/// .lt-ie9 .class:hover {
+/// 	background-position: -36px -36px;
+/// }
+@mixin sprite($spriteMap, $icon, $type: all) {
+	$sprite: map-get($spriteMap, sprite);
+	
+	@if $type == all {
+		// Shares the backgrounds
+		display: inline-block;
+		background-image: url(map-get($sprite, svgPath));
+		background-size: map-get($sprite, width) map-get($sprite, height);
+	}
+
+	$iconMap: icon-attr($spriteMap, $icon);
+
+	// Outputs dimensions in em
+	@if $type == all or $type == size {
+		width: map-get($iconMap, width);
+		height:map-get($iconMap, height);
+	}
+
+	// Outputs background position in em
+	@if $type == all or $type == bg {
+		background-position: map-get($iconMap, x) map-get($iconMap, y);
+	}
+
+	// Add ie fallback
+	@include ie-sprite($spriteMap, $icon, $type);
+
+}
+    

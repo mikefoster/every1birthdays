@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>every1 Birthdays</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<link href="css/every1-birthdays.css" rel="stylesheet" media="all">
+	
+</head>
+
+<body ng-app="app" ng-controller="MainCtrl">
+  
+  <div class="wrapper">
+  
+
+    <div class="birthdays">
+	    <h1>It's someones birthday...</h1>
+	    <ul>
+		    <li  ng-repeat="friend in friends| orderBy:'fromNow ' "  ng-class="{ birthToday: todayBirthday && onlyToday(friend) }">
+		    	<div class="name">{{friend.name}}</div>
+		    	<div class="date">{{friend.niceBirthday}}</div>
+		    </li>
+	    </ul>
+    
+    </div>
+  </div>
+    
+<script src="scripts/jquery.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+
+</html>
