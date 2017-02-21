@@ -79,7 +79,7 @@ gulp.task('scss', () => {
 });
 
 gulp.task('images', () => {
-	return gulp.src(['./src/images/*.+(jpg|png)'])
+	return gulp.src(['./src/images/*.+(jpg|png|svg)'])
 		.pipe(gulp.dest(config.destination + '/images'));
 });
 

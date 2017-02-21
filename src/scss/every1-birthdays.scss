@@ -29,23 +29,35 @@ html {
 
 .wrapper {
 	position: relative;
-	width:100%;
 	height:auto;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
+.logo {
+	width:120px;
+	margin-top: 20px;
+}
 h1 {
+	font-family: $font-camptonblack;
+	@include font-size(2);
+	@include line-height(2.2);
+	text-transform: uppercase;
+	color: $color-secondary;
+	margin-top: 0;
+}
+h2 {
 	position: absolute;
-	top:75px;
+	top:115px;
 	margin-bottom: 40px;
-	text-align: center;
+	text-align: left;
 	color: $color-secondary;
 	font-family: $font-camptonblack;
 	@include font-size(2);
 	@include line-height(2.2);
-	left:0;
+	left:15px;
 	right:0;
 	width:280px;
-	margin: 0 auto;
 }
 .yay {
 	display: none;
@@ -54,31 +66,60 @@ h1 {
 	}
 }
 
-.show-all {
+.show-btn {
 	position: absolute;
-	height: 43px;
-	width: 59px;
-	background-color: $color-teal;
-	border-radius:40px;
-	padding-top: 16px;	
-	@include font-size(1);
-	@include line-height(.9);
+	height: 55px;
+	width: 55px;
 	text-align: center;
-	margin-top:20px;
+	top:12px;
 	right:20px;
+	@include transition(all .3s ease-in-out);
+	cursor: pointer;
+	.circle{
+		width:100%;
+		border-radius:50%;
+		text-align:center;
+		padding:50% 0;
+		line-height:0;
+		position:relative;
+		background-color: $color-teal;
+		span {
+			margin: 0 auto;
+			display: block;
+			@include font-size(.8);
+			@include line-height(.7);
+			font-family: $font-campton_bookbold;
+			left: 3px;
+			right: 3px;
+			top: 17px;
+			bottom: 0;
+			position: absolute;
+		}
+	}
+
+	&:hover,
+	&:active,
+	&:focus {
+		transform: scale(1.2);
+		.circle {
+			background-color: #75ddde;
+		}
+		
+		
+	}
 }
 
 .birthdays {
 	position: absolute;
-	left:0;
+	left:15px;
 	right:0;
 	margin-top:205px;
-	width:100%;
-	text-align: center;
+	text-align: left;
 	&.got-birthdaytoday {
 		margin-top: 340px;
 		ul {
 			li {
+
 				&:first-child {
 					display: block;
 					opacity: .3;
@@ -113,6 +154,7 @@ h1 {
 		li {
 			display: none;
 			margin-bottom: 40px;
+			@include transition(opacity .3s ease-in-out);
 			.name, .date {
 			    font-family: $font-camptonblack;
 			    letter-spacing: 0.01em;
@@ -130,6 +172,10 @@ h1 {
 			}
 			&:first-child {
 				display: block;
+				.name {
+					@include font-size(2.4);
+					@include line-height(2.8);
+				}
 			}
 			&:nth-child(2) {
 				display: block;
@@ -151,12 +197,13 @@ h1 {
 				display: block;
 				position: absolute;
 				top:-140px;
-				width:100%;
+				left:-15px;
+				right:0;
 				opacity: 1 !important;
 				background-color: $color-teal;
-				.name, date {
-					padding-left: 20px;
-					padding-right: 20px;
+				.name, .date {
+					padding-left: 15px;
+					padding-left: 15px;
 				}
 				.name {
 					padding-top: 20px;
@@ -184,21 +231,44 @@ h1 {
 /* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
 
+	
+	h2 {
+		text-align: center;
+		margin: 0 auto;
+	}
+	.birthdays {
+		text-align: center;
+		margin-top: 168px;
+		ul {
+			li{
+				&.birthToday {
+					top:-160px;
+				}
+			}
+		}
+	}
 
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
  
-	 h1 {
-		@include font-size(2.4);
-		@include line-height(2.6);
+	 h2 {
+		@include font-size(2.6);
+		@include line-height(2.7);
+		width:310px;
 	
 	 }
 	.birthdays {
-		margin-top:285px; 
+		margin-top:295px; 
 		ul {
 			li {
+				&:first-child {
+					.name {
+						@include font-size(2.4);
+						@include line-height(2.8);
+					}
+				}
 				&.birthToday {
 					top:-160px;
 					.name {
@@ -216,14 +286,76 @@ h1 {
 			}
 		}
 		&.got-birthdaytoday {
-			margin-top: 440px;
+			margin-top: 490px;
+			ul {
+				li {
+					top: -235px;
+				}
+			}
 		}
 	}
-
+	.show-btn {
+		top: 80px;
+		right:0;
+		left:380px;
+		margin: 0 auto;
+	}
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
+	
+	
+	.wrapper {
+		width:1200px;
+		margin:0 auto;
+	}
+	h2 {
+		width:420px;
+		@include font-size(3.6);
+		@include line-height(3.7);
+		top:150px;
+	}
+	.show-btn {
+		left:550px;		
+	}
+	.birthdays {
+		margin-top: 400px;
+		ul {
+			 li {
+				 &:first-child {
+					.name {
+						@include font-size(2.8);
+						@include line-height(3);
+					}
+					.date {
+						@include font-size(2.2);
+						@include line-height(2.4);
+					}
+				}
+				 .name {
+						@include font-size(2);
+						@include line-height(2.2); 
+				 }
+			 }
+		}
+		&.got-birthdaytoday {
+			margin-top: 600px;
+			ul {
+				li {
+					top: -235px;
+					.name {
+						@include font-size(2.8);
+						@include line-height(3);
+					}
+					.date {
+						@include font-size(2.2);
+						@include line-height(2.4);
+					}
+				}
+			}
+		}
+	}
 	
 }
 
