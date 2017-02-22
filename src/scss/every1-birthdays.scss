@@ -7,6 +7,8 @@
 
 @import "structure";
 
+
+
 body,
 button,
 input,
@@ -18,6 +20,7 @@ textarea {
 	@include line-height(2.4);
 	-webkit-font-smoothing: antialiased;
     font-weight: normal;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 html {
 	height:100%;
@@ -83,6 +86,7 @@ h2 {
 		line-height:0;
 		position:relative;
 		background-color: $color-teal;
+		@include transition(all .3s ease-in-out);
 		span {
 			margin: 0 auto;
 			display: block;
@@ -97,15 +101,32 @@ h2 {
 		}
 	}
 
-	&:hover,
+	&:hover
+	 {
+		transform: scale(1.2);
+	}
 	&:active,
 	&:focus {
-		transform: scale(1.2);
+		transform: scale(1);
 		.circle {
-			background-color: #75ddde;
+			background-color: $color-teal;
+		}		
+	}
+}
+.touchevents {
+	.show-btn {
+		
+		@include transition(all .3s ease-in-out);
+		transform: scale(1);
+
+		&:active {
+			transform: scale(1);
 		}
 		
-		
+		&.showall {
+			transform: scale(1.2);
+
+		}
 	}
 }
 
@@ -253,14 +274,20 @@ h2 {
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
  
-	 h2 {
+ 	h1 {
+	 	margin-left: 20px;
+ 	}
+	h2 {
 		@include font-size(2.6);
 		@include line-height(2.7);
-		width:310px;
-	
+		width:310px;	
+	}
+	 .logo {
+		 margin-top:60px;
+		 margin-left: 20px;
 	 }
 	.birthdays {
-		margin-top:295px; 
+		margin-top: 209px;
 		ul {
 			li {
 				&:first-child {
@@ -286,18 +313,18 @@ h2 {
 			}
 		}
 		&.got-birthdaytoday {
-			margin-top: 490px;
+			margin-top: 450px;
 			ul {
 				li {
-					top: -235px;
+					top: -245px;
 				}
 			}
 		}
 	}
 	.show-btn {
-		top: 80px;
+		top: 30px;
 		right:0;
-		left:380px;
+		right:60px;
 		margin: 0 auto;
 	}
 }
@@ -316,21 +343,19 @@ h2 {
 		@include line-height(3.7);
 		top:150px;
 	}
-	.show-btn {
-		left:550px;		
-	}
+
 	.birthdays {
-		margin-top: 400px;
+		margin-top: 295px;
 		ul {
 			 li {
 				 &:first-child {
 					.name {
-						@include font-size(2.8);
-						@include line-height(3);
+						@include font-size(3.8);
+						@include line-height(3.8);
 					}
 					.date {
-						@include font-size(2.2);
-						@include line-height(2.4);
+						@include font-size(2.6);
+						@include line-height(2.8);
 					}
 				}
 				 .name {
@@ -340,10 +365,11 @@ h2 {
 			 }
 		}
 		&.got-birthdaytoday {
-			margin-top: 600px;
+			margin-top: 530px;
 			ul {
 				li {
-					top: -235px;
+					top: -250px;
+
 					.name {
 						@include font-size(2.8);
 						@include line-height(3);

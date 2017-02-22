@@ -90,7 +90,7 @@ gulp.task('fonts', () => {
 
 gulp.task('scripts', () => {
 
-	return gulp.src(['./src/scripts/main.js', './src/scripts/jquery.js', './src/scripts/ag-config.js'])
+	return gulp.src(['./src/scripts/modernizr-custom.js', './src/scripts/main.js', './src/scripts/jquery.js', './src/scripts/ag-config.js'])
 		.pipe(gulp.dest(config.destination + '/scripts'));
 });
 
