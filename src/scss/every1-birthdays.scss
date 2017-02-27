@@ -140,7 +140,13 @@ h2 {
 		margin-top: 340px;
 		ul {
 			li {
-
+				&:first-child {
+					display: block;
+					.name {
+					@include font-size(1.6);
+					@include line-height(2.4);
+					}
+				}
 				&:first-child {
 					display: block;
 					opacity: .3;
@@ -214,27 +220,33 @@ h2 {
 				display: block;
 				opacity: .3;
 			}
-			&.birthToday {
+			&.today {
 				display: block;
 				position: absolute;
 				top:-140px;
 				left:-15px;
 				right:0;
 				opacity: 1 !important;
-				background-color: $color-teal;
-				.name, .date {
-					padding-left: 15px;
-					padding-left: 15px;
+				background-color: $color-teal;				
+				.birthToday {
+				
+					.name, .date {
+						padding-left: 15px;
+						padding-left: 15px;
+						@include font-size(2);
+						@include line-height(2.4);
+					}
+					.name {
+						padding-top: 20px;
+					}
+					.date {
+						color: black;
+						margin-bottom: 20px;
+						
+					}				
 				}
-				.name {
-					padding-top: 20px;
-				}
-				.date {
-					color: black;
-					margin-bottom: 20px;
-					
-				}				
 			}
+
 			&.show {
 				opacity: 1;
 				display: block;
@@ -261,8 +273,8 @@ h2 {
 		text-align: center;
 		margin-top: 168px;
 		ul {
-			li{
-				&.birthToday {
+			li	{
+				&.today {
 					top:-160px;
 				}
 			}
@@ -296,20 +308,23 @@ h2 {
 						@include line-height(2.8);
 					}
 				}
-				&.birthToday {
+				&.today {
 					top:-160px;
-					.name {
-						@include font-size(2);
-						@include line-height(2.2);
-						padding-bottom: 10px;
-						padding-top: 48px;
-					}
-					.date {
-						padding-bottom: 35px;
-						@include font-size(1.8);
-						@include line-height(2);
+					.birthToday {
+						.name {
+							@include font-size(2);
+							@include line-height(2.2);
+							padding-bottom: 10px;
+							padding-top: 48px;
+						}
+						.date {
+							padding-bottom: 35px;
+							@include font-size(1.8);
+							@include line-height(2);
+						}
 					}
 				}
+				
 			}
 		}
 		&.got-birthdaytoday {
@@ -317,6 +332,12 @@ h2 {
 			ul {
 				li {
 					top: -245px;
+					&.today {
+						.name, .date {
+							@include font-size(2);
+							@include line-height(2.2);
+						}	
+					}
 				}
 			}
 		}
@@ -369,7 +390,16 @@ h2 {
 			ul {
 				li {
 					top: -250px;
-
+					&:first-child {
+						.name {
+							@include font-size(2.8);
+							@include line-height(3);
+						}
+						.date {
+							@include font-size(2.2);
+							@include line-height(2.4);
+						}
+					}
 					.name {
 						@include font-size(2.8);
 						@include line-height(3);

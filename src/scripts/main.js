@@ -9,14 +9,14 @@ jQuery(document).ready(function ($) {
 	    $('.show-btn').click(function () {
 		    
 		    $('.show-btn span').toggleText('Show all', 'Show less');
-			
         	$('.birthdays ul li').toggleClass('show');
         	$(this).toggleClass('showall');
 	    });
 			
-		 if($(".birthdays ul li").hasClass('birthToday') ){
-	        $(".birthdays").addClass('got-birthdaytoday');
-	        $("h2").replaceWith( "<h2>yay,<br> look whos birthday it is..</h2>" );
-	     }
-			
+		if($(".birthday-wrapper").hasClass('birthToday') ){
+			$(".birthdays").addClass('got-birthdaytoday');
+			$(".birthToday").parent().addClass('today');
+			$("h2").replaceWith( "<h2>yay,<br> look whos birthday it is..</h2>" );
+		}
+
 });

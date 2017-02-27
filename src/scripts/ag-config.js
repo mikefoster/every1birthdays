@@ -6,10 +6,6 @@ app.controller("MainCtrl", ["$scope",
             birthday: "01/18",
             niceBirthday:"18th January"
         }, {
-            name: 'Arjun Naik',
-            birthday: "01/22",
-            niceBirthday:"22nd January"
-        }, {
             name: 'Lauren Henley',
             birthday: "02/13",
             niceBirthday:"13th February"
@@ -87,8 +83,20 @@ app.controller("MainCtrl", ["$scope",
             niceBirthday:"25th November"
         }, {
             name: 'Karl Draper-Firth',
-            birthday: "02/22",
+            birthday: "12/27",
             niceBirthday:"27th December"
+        }, {
+            name: 'Test name',
+            birthday: "02/27",
+            niceBirthday:"27th February"
+        }, {
+            name: 'Test name',
+            birthday: "02/28",
+            niceBirthday:"28th February"
+        }, {
+            name: 'Test name',
+            birthday: "03/1",
+            niceBirthday:"1st March"
         }]
         
         $scope.friends.forEach(function(data) {
@@ -105,9 +113,9 @@ app.controller("MainCtrl", ["$scope",
         })
       
       $scope.todayBirthday = true;
-      
+      var today = new Date();
+
       $scope.onlyToday = function(friend) {
-        var today = new Date();
         
         if(friend.birthDate.getDate() === today.getDate() && friend.birthDate.getMonth() === today.getMonth())
           return true;
