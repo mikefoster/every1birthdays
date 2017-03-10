@@ -85,21 +85,9 @@ app.controller("MainCtrl", ["$scope",
             name: 'Karl Draper-Firth',
             birthday: "12/27",
             niceBirthday:"27th December"
-        }, {
-            name: 'Test name',
-            birthday: "02/27",
-            niceBirthday:"27th February"
-        }, {
-            name: 'Test name',
-            birthday: "02/28",
-            niceBirthday:"28th February"
-        }, {
-            name: 'Test name',
-            birthday: "03/1",
-            niceBirthday:"1st March"
         }]
         
-        $scope.friends.forEach(function(data) {
+		$scope.friends.forEach(function(data) {
             var day = data.birthday.split("/")
             var currentYear = new Date().getFullYear();
             var birthdayDate = new Date(currentYear, day[0] - 1,
@@ -113,11 +101,16 @@ app.controller("MainCtrl", ["$scope",
         })
       
       $scope.todayBirthday = true;
-      var today = new Date();
-
+      
       $scope.onlyToday = function(friend) {
+        var today = new Date();
+        var currentDay = ("0" + today.getDate()).slice(-2);
+        var currentMonth = ("0" + (today.getMonth() + 1)).slice(-2);
         
-        if(friend.birthDate.getDate() === today.getDate() && friend.birthDate.getMonth() === today.getMonth())
+        var month = friend.birthday.split('/')[0];
+        var day = friend.birthday.split('/')[1];
+        
+        if(day == currentDay && month == currentMonth)
           return true;
         else
           return false;

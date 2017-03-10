@@ -13,10 +13,10 @@ jQuery(document).ready(function ($) {
         	$(this).toggleClass('showall');
 	    });
 			
-		if($(".birthday-wrapper").hasClass('birthToday') ){
+		if($(".birthday-wrapper").hasClass('birthtoday') ){
 			$(".birthdays").addClass('got-birthdaytoday');
-			$(".birthToday").parent().addClass('today');
-			$("h2").replaceWith( "<h2>yay,<br> look whos birthday it is..</h2>" );
+			$(".birthtoday").parent().addClass('today');
+			$("h2").replaceWith( "<h2>yay,<br> look whos birthday it is today..</h2>" );
 		}
 
 });

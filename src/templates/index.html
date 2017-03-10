@@ -33,7 +33,7 @@
 	    
 	    <ul>
 		    <li ng-repeat="friend in friends | orderBy:'fromNow'" >
-		    	<div ng-class="{birthToday: todayBirthday && onlyToday(friend)}" class="birthday-wrapper">
+		    	<div ng-class="{'birthtoday' : onlyToday(friend) }" class="birthday-wrapper">
 			    	<div class="name">{{friend.name}}</div>
 			    	<div class="date">{{friend.niceBirthday}}</div>
 			    </div>

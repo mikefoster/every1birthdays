@@ -21,15 +21,12 @@ textarea {
 	-webkit-font-smoothing: antialiased;
     font-weight: normal;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+    height:100%;
 }
 html {
 	height:100%;
-		background-color: #000000;
+	background-color: #000000;
 }
-
-.body {
-}
-
 .wrapper {
 	position: relative;
 	height:auto;
@@ -39,6 +36,7 @@ html {
 
 .logo {
 	width:120px;
+	height:48px;
 	margin-top: 20px;
 }
 h1 {
@@ -60,7 +58,7 @@ h2 {
 	@include line-height(2.2);
 	left:15px;
 	right:0;
-	width:280px;
+	width:300px;
 }
 .yay {
 	display: none;
@@ -228,7 +226,7 @@ h2 {
 				right:0;
 				opacity: 1 !important;
 				background-color: $color-teal;				
-				.birthToday {
+				.birthtoday {
 				
 					.name, .date {
 						padding-left: 15px;
@@ -268,14 +266,19 @@ h2 {
 	h2 {
 		text-align: center;
 		margin: 0 auto;
+		width:320px;
+		left: 0;
+		top: 137px;
 	}
 	.birthdays {
 		text-align: center;
 		margin-top: 168px;
+		left: 0;
 		ul {
 			li	{
 				&.today {
 					top:-160px;
+					left:0;
 				}
 			}
 		}
@@ -292,7 +295,7 @@ h2 {
 	h2 {
 		@include font-size(2.6);
 		@include line-height(2.7);
-		width:310px;	
+		width:450px;	
 	}
 	 .logo {
 		 margin-top:60px;
@@ -310,10 +313,10 @@ h2 {
 				}
 				&.today {
 					top:-160px;
-					.birthToday {
+					.birthtoday {
 						.name {
 							@include font-size(2);
-							@include line-height(2.2);
+							@include line-height(2);
 							padding-bottom: 10px;
 							padding-top: 48px;
 						}
@@ -333,10 +336,14 @@ h2 {
 				li {
 					top: -245px;
 					&.today {
-						.name, .date {
-							@include font-size(2);
-							@include line-height(2.2);
+						.name {
+							@include font-size(2.8);
+							@include line-height(2.8);
 						}	
+						.date {
+							@include font-size(2.4);
+							@include line-height(2.4);
+						}
 					}
 				}
 			}
@@ -359,7 +366,7 @@ h2 {
 		margin:0 auto;
 	}
 	h2 {
-		width:420px;
+		width:600px;
 		@include font-size(3.6);
 		@include line-height(3.7);
 		top:150px;
