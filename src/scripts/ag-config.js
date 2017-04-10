@@ -22,10 +22,6 @@ app.controller("MainCtrl", ["$scope",
             birthday: "03/16",
             niceBirthday:"16th March"            
         }, {
-            name: 'Brett Dennis',
-            birthday: "04/9",
-            niceBirthday:"9th April"
-        }, {
             name: 'Hannah Ratcliffe',
             birthday: "04/14",
             niceBirthday:"14th April"
