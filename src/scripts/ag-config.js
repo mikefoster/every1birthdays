@@ -6,13 +6,13 @@ app.controller("MainCtrl", ["$scope",
             birthday: "01/18",
             niceBirthday:"18th January"
         }, {
+            name: 'Stuart McNair',
+            birthday: "02/8",
+            niceBirthday:"8th February"
+        }, {
             name: 'Lauren Henley',
             birthday: "02/13",
             niceBirthday:"13th February"
-        }, {
-            name: 'Zakariya Desai',
-            birthday: "02/16",
-            niceBirthday:"16th February"
         }, {
             name: 'Adam Kellett',
             birthday: "03/2",
@@ -22,13 +22,13 @@ app.controller("MainCtrl", ["$scope",
             birthday: "03/16",
             niceBirthday:"16th March"            
 		}, {
-            name: 'Rachael Cartmell',
-            birthday: "04/10",
-            niceBirthday:"10th April"            
-        }, {
             name: 'Hannah Ratcliffe',
             birthday: "04/14",
             niceBirthday:"14th April"
+        }, {
+            name: 'Scott Bradley',
+            birthday: "06/5",
+            niceBirthday:"5th June"
         }, {
             name: 'Lauren Kirby',
             birthday: "06/13",
@@ -37,6 +37,10 @@ app.controller("MainCtrl", ["$scope",
             name: "Hannah Dell'Armi",
             birthday: "06/18",
             niceBirthday:"18th June"
+        }, {
+	        name: 'Janet Roseman',
+            birthday: "07/1",
+            niceBirthday:"1st July"
         }, {
             name: 'Stuart Jameson',
             birthday: "07/23",
@@ -70,18 +74,19 @@ app.controller("MainCtrl", ["$scope",
             birthday: "11/18",
             niceBirthday:"18th November"
         }, {
-            name: 'Chris Lomax',
-            birthday: "11/24",
-            niceBirthday:"24th November"
-        }, {
             name: 'Chris Worthington',
             birthday: "11/25",
             niceBirthday:"25th November"
         }, {
-            name: 'Karl Draper-Firth',
-            birthday: "12/27",
-            niceBirthday:"27th December"
-        }]
+            name: 'Josh Roseman',
+            birthday: "12/12",
+            niceBirthday:"12th December"            
+        }, {
+            name: 'Molly Cookson',
+            birthday: "12/29",
+            niceBirthday:"29th December"
+        }
+        ]
         
 		$scope.friends.forEach(function(data) {
             var day = data.birthday.split("/")
