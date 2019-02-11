@@ -2,6 +2,10 @@ var app = angular.module("app", []);
 app.controller("MainCtrl", ["$scope",
     function($scope) {
         $scope.friends = [{
+            name: 'Mike Smedley',
+            birthday: "01/11",
+            niceBirthday:"11th January"
+        },{
             name: 'Emma Eley',
             birthday: "01/18",
             niceBirthday:"18th January"
@@ -13,11 +17,7 @@ app.controller("MainCtrl", ["$scope",
             name: 'Lauren Henley',
             birthday: "02/13",
             niceBirthday:"13th February"
-        }, {
-            name: 'Adam Kellett',
-            birthday: "03/2",
-            niceBirthday:"2nd March"
-        }, {
+        },{
             name: 'Michael Foster',
             birthday: "03/16",
             niceBirthday:"16th March"            
@@ -25,6 +25,10 @@ app.controller("MainCtrl", ["$scope",
             name: 'Hannah Ratcliffe',
             birthday: "04/14",
             niceBirthday:"14th April"
+        }, {
+            name: 'Emily Waddecar',
+            birthday: "04/17",
+            niceBirthday:"17th April"
         }, {
             name: 'Scott Bradley',
             birthday: "06/5",
@@ -41,15 +45,7 @@ app.controller("MainCtrl", ["$scope",
 	        name: 'Janet Roseman',
             birthday: "07/1",
             niceBirthday:"1st July"
-        }, {
-            name: 'Stuart Jameson',
-            birthday: "07/23",
-            niceBirthday:"23rd July"
-        }, {
-            name: 'Jon Hunter',
-            birthday: "08/2",
-            niceBirthday:"2nd August"
-        }, {
+        },{
             name: 'Simon Clayton',
             birthday: "08/31",
             niceBirthday:"31st August"
@@ -66,10 +62,6 @@ app.controller("MainCtrl", ["$scope",
             birthday: "10/24",
             niceBirthday:"24th October"
         }, {
-            name: 'Joanna Marshall',
-            birthday: "11/2",
-            niceBirthday:"2nd November"
-        }, {
             name: 'David Vesty',
             birthday: "11/18",
             niceBirthday:"18th November"
@@ -81,11 +73,8 @@ app.controller("MainCtrl", ["$scope",
             name: 'Josh Roseman',
             birthday: "12/12",
             niceBirthday:"12th December"            
-        }, {
-            name: 'Molly Cookson',
-            birthday: "12/29",
-            niceBirthday:"29th December"
-        }
+        },
+        
         ]
         
 		$scope.friends.forEach(function(data) {
