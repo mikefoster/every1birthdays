@@ -6,9 +6,9 @@ app.controller("MainCtrl", ["$scope",
             birthday: "01/11",
             niceBirthday:"11th January"
         },{
-            name: 'Emma Eley',
-            birthday: "01/18",
-            niceBirthday:"18th January"
+            name: 'Tom Morton',
+            birthday: "01/24",
+            niceBirthday:"24th January"
         }, {
             name: 'Stuart McNair',
             birthday: "02/8",
@@ -65,10 +65,6 @@ app.controller("MainCtrl", ["$scope",
             name: 'David Vesty',
             birthday: "11/18",
             niceBirthday:"18th November"
-        }, {
-            name: 'Chris Worthington',
-            birthday: "11/25",
-            niceBirthday:"25th November"
         }, {
             name: 'Josh Roseman',
             birthday: "12/12",
