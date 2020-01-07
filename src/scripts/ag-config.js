@@ -46,6 +46,10 @@ app.controller("MainCtrl", ["$scope",
             birthday: "07/1",
             niceBirthday:"1st July"
         },{
+            name: 'Alice Davies',
+            birthday: "08/22",
+            niceBirthday:"22nd August"
+        }, {
             name: 'Simon Clayton',
             birthday: "08/31",
             niceBirthday:"31st August"
@@ -53,10 +57,6 @@ app.controller("MainCtrl", ["$scope",
             name: 'Chris Green',
             birthday: "09/5",
             niceBirthday:"5th September"
-        }, {
-            name: 'Heath Reidy',
-            birthday: "09/6",
-            niceBirthday:"6th September"
         }, {
             name: 'Luke Rossall',
             birthday: "10/24",
